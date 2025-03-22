@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Trust</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="icon" type="image" href="Public/icon/icon.png">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        header img {
+            height: 100px;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #003f7f;
+            padding: 10px;
+            flex-wrap: wrap;
+        }
+        
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            position: relative;
+            background-color: #f0f0f0;
+            margin: 20px 0;
+            display: right;
+            align-items: center;
+        }
+        
+        .scrolling-text {
+            white-space: nowrap;
+            animation: scroll 15s linear infinite;
+            color: #333;
+            font-size: 20px;
+            padding: 10px;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .services, .services-2 {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-box {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            width: 300px;
+            background-color: #fff;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-box:hover {
+            color: green;
+            box-shadow: 5px 2px 5px rgb(184, 178, 178);
+        }
+        
+        .footer1 {
+            text-align: center;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            margin-top: 120px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-box {
+                width: 90%;
+            }
+        }
+        footer {
+            background: #004d99;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .footer-section {
+            margin: 10px;
+        }
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 90%;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+}
+
+.menu-button {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    margin-left: 15px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+h2
+{
+    margin-left: 40px;
+    font-weight: 300;
+
+}
+
+/* Add these styles to your existing style section */
+.login-section {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.login-section input {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-section button {
+    margin-top: 10px;
+}
+
+#userInfo {
+    padding: 10px;
+}
+.bi-heart-fill
+{
+    color: red;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Public/logo/logo.png" alt="Logo">
+        <div>
+            <h1 style="font-weight: bold;">PUBLIC TRUST</h1>
+            <p>Building trust and empowering communities</p>
+        </div>
+    </header>
+    
+
+    <div class="nav">
+        <span class="menu-button" onclick="openNav()">&#9776;</span>
+        <nav>
+            <div id="mySidenav" class="sidenav">
+
+                <div><img src="Public/logo/logo.png" width="45px" class="ms-4"></div>
+
+                <div class="login-section" style="padding: 20px;">
+                    <h4 style="color: white;">User Login</h4>
+                    <form id="loginForm" style="margin-top: 15px;">
+                        <input type="text" id="username" placeholder="Username" 
+                            style="margin-bottom: 10px; padding: 5px; width: 100%;">
+                        <input type="password" id="password" placeholder="Password" 
+                            style="margin-bottom: 10px; padding: 5px; width: 100%;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    </form>
+                    <div id="userInfo" style="display: none; color: white; margin-top: 10px;"></div>
+                </div>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="./about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="activites.html">Activities</a>
+                <a href="#support">Support Us</a>
+                <a href="donate.html">Donate</a>
+                <a href="medical.html">Medical Support</a>
+                <a href="education.html">Education Support</a>
+                <a href="chat.html">Contact</a>
+            </div>
+        
+        </nav>
+    </div>
+    
+    
+    <div class="scroll-container">
+        <div class="scrolling-text">We are dedicated to serving communities with trust and integrity with lots of love <span class="bi bi-heart-fill"></span>.</div>
+    </div>
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-box">
+                <h3>Medical Support <span class="bi bi-heart-pulse-fill" style="color:red"></span></h3>
+                <p>Providing medical assistance to those in need.</p>
+                <a href="medical.html"><button class="btn btn-primary">Apply</button></a>
+            </div>
+            <div class="service-box">
+                <h3>Educational Support <span class="bi bi-book" style="color:black"></span></h3>
+                <p>Scholarships to help students achieve their goals.</p>
+                <a href="education.html"><button class="btn btn-primary">Apply</button></a>
+            </div>
+            <div class="service-box">
+                <h3>Food Distribution <span class="bi bi-emoji-smile" style="color:black"></span></h3>
+                <p>Providing food for those who are in need.</p>
+                <a href="food.html"><button class="btn btn-primary">Apply</button></a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="support">
+        <h2>Support Us</h2>
+        <div class="services-2">
+            <div class="service-box">
+                <h3>Donate</h3>
+                <p>Every penny brings a smile.</p>
+                <a href="donate.html"><button class="btn btn-primary">Donate</button></a>
+            </div>
+            <div class="service-box">
+                <h3>Join as Volunteer</h3>
+                <p>Help us build a better society.</p>
+                <a href="volunteer.html"><button class="btn btn-primary">Join</button></a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="footer1">
+        <p>&copy; 2025 Public Trust. All rights reserved.</p>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: alupanac@gmail.com</p>
+                <p>Phone: +91 9381605704</p>
+                <p>Address: 21-10-1T, </p>
+                <p>Town Kotha Road,</p>
+                <p> Visakhapatman, India</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./chat.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function contact() { alert("Contact us at: 9381605704"); }
+
+
+        function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Simple validation
+        if (username && password) {
+            // Store user details in localStorage
+            const userDetails = {
+                username: username,
+                loginTime: new Date().toLocaleString()
+            };
+            
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+            
+            // Update UI
+            showUserInfo(userDetails);
+            
+            // Clear form
+            document.getElementById('loginForm').reset();
+        } else {
+            alert('Please enter both username and password');
+        }
+    });
+
+    // Check if user is already logged in
+    function checkLoginStatus() {
+        const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        if (userDetails) {
+            showUserInfo(userDetails);
+        }
+    }
+
+    // Show user information
+    function showUserInfo(userDetails) {
+        const loginForm = document.getElementById('loginForm');
+        const userInfo = document.getElementById('userInfo');
+        
+        loginForm.style.display = 'none';
+        userInfo.style.display = 'block';
+        userInfo.innerHTML = `
+            <p>Welcome, ${userDetails.username}!</p>
+            <p>Login time: ${userDetails.loginTime}</p>
+            <button onclick="logout()" class="btn btn-danger btn-sm">Logout</button>
+        `;
+    }
+
+    // Logout function
+    function logout() {
+        localStorage.removeItem('userDetails');
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('userInfo').style.display = 'none';
+    }
+
+    // Check login status when page loads
+    window.addEventListener('load', checkLoginStatus);
+
+
+
+    </script>
+</body>
+</html>

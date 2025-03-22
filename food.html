@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Distribution Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Background Image */
+        body {
+            position: relative;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("Public/images/food-distribution.jpg") no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* Semi-Transparent Overlay */
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* 60% opacity */
+            z-index: -1;
+        }
+
+        .form-container {
+            max-width: 550px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(2, 2, 2, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-title img {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="form-container">
+            <div class="form-title">
+                <img src="Public/logo/logo.png" alt="Logo">
+                <h2 class="text-center flex-grow-1">Food Distribution Request Form</h2>
+            </div>
+
+            <form onsubmit="validateForm(event);">
+                <!-- Full Name -->
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <!-- Address -->
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" rows="3" placeholder="Enter your full address" required></textarea>
+                </div>
+
+                <!-- Number of People in Need -->
+                <div class="mb-3">
+                    <label for="people" class="form-label">Number of People Needing Food</label>
+                    <input type="number" class="form-control" id="people" placeholder="Enter number of people" min="1" required>
+                </div>
+
+                <!-- Type of Food Required -->
+                <div class="mb-3">
+                    <label for="foodType" class="form-label">Type of Food Required</label>
+                    <select class="form-select" id="foodType" required>
+                        <option value="" disabled selected>Select food type</option>
+                        <option value="cooked">Cooked Food</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="baby-food">Baby Food</option>
+                        <option value="special-diet">Special Diet</option>
+                    </select>
+                </div>
+
+                <!-- Any Additional Requirements -->
+                <div class="mb-3">
+                    <label for="requirements" class="form-label">Any Additional Requirements?</label>
+                    <textarea class="form-control" id="requirements" rows="3" placeholder="Write any special requests (if any)..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Request Food</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    function validateForm(event) {
+        event.preventDefault(); // Prevents form submission
+
+        let fullName = document.getElementById("fullName").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let address = document.getElementById("address").value.trim();
+        let people = document.getElementById("people").value.trim();
+        let foodType = document.getElementById("foodType").value;
+
+        // Phone number validation (10 digits)
+        let phoneRegex = /^[0-9]{10}$/;
+        if (!phone.match(phoneRegex)) {
+            alert("Please enter a valid 10-digit phone number.");
+            return;
+        }
+
+        // Email validation
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.match(emailRegex)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        // Checking required fields
+        if (fullName === "" || address === "" || people === "" || foodType === "") {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Success Message
+        alert("Your food distribution request has been received! We will contact you soon.");
+    }
+</script>
+
+</html>

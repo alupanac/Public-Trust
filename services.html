@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Services - Multi Tab Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container-fluid {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #f8f9fa;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #e9ecef;
+        }
+
+        .tab-button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .service-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #007bff;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .features-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .tab-button {
+                flex: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .tab-content {
+                padding: 15px;
+            }
+        }
+        dt
+        {
+            font-size: larger;
+            margin-top: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="tab-container">
+            <div class="tabs row">
+                <button class="tab-button col-sm-3 active" onclick="openTab(event, 'services')">Our Services</button>
+                <button class="tab-button col-sm-3" onclick="openTab(event, 'education')">Education</button>
+                <button class="tab-button col-sm-3" onclick="openTab(event, 'medical')">Medical</button>
+                <button class="tab-button col-sm-3" onclick="openTab(event, 'food')">Food</button>
+            </div>
+
+            <div id="services" class="tab-content active">
+                <div class="row mt-5">
+                    <div class="col-md-6">
+                        <h2>Amount Received:</h2>
+                        <p class="ms-lg-5 price">₹10,00,200</p>
+
+                        <h2>Amount Spent:</h2>
+                        <p class="ms-lg-5 price">₹8,00,150</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="Public/images/Screenshot 2025-03-22 134015.png" class="img-fluid" alt="Chart">
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-content">
+                <h2>Education Initiatives</h2>
+                    <div class="row">
+                    <div class="col-md-6">
+                    <dt>Support Underprivileged Students</dt>
+                    <ul>
+                        <li>Provide scholarships, free tuition, and financial aid to students from low-income backgrounds.</li>
+                        <li>Offer resources like books, uniforms, and meals.</li>
+                    </ul>
+                    
+                    <dt>Promote Community Development</dt>
+                    <ul>
+                        <li>Strengthen communities by providing education that leads to employment opportunities.</li>
+                        <li>Reduce poverty and social inequality through skill-based learning.</li>
+                    </ul>
+                    
+
+                    <dt>Promote Quality Education</dt>
+                    <ul>
+                        <li>Improve access to education in underprivileged areas.</li>
+                        <li>Enhance the quality of education through better infrastructure, trained teachers, and modern resources.</li>
+                    </ul>
+
+                    <dt>Encouraging Research & Innovation</dt>
+                    <ul>
+                        <li>Trusts can fund research in science, technology, medicine, and social sciences.</li>
+                        <li>Promote new learning methodologies, e-learning platforms, and skill-based education.</li>
+                    </ul>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="./Public/images/Global_Palestinian_School_Girl_Classroom.webp"  class="img-fluid" alt="Chart">
+                        </div>
+                    </div>
+                    
+                
+            </div>
+
+            <div id="medical" class="tab-content">
+                
+                <div class="row">
+                    
+                    <div class="col-md-6 text-center">
+                        <img src="Public/images/child-medical.jpg" width="860px" class="img-fluid" alt="Chart">
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Medical Services</h2>
+                        <dt>Provide Healthcare to the Poor and Needy</dt>
+                        <ul>
+                            <li>Many people, especially in rural and economically weaker areas, cannot afford basic healthcare.</li>
+                            <li>A free medical trust ensures that no patient is denied treatment due to financial constraints.</li>
+                        </ul>
+                        
+                        <dt>Offer Free Treatment for Life-Threatening Diseases</dt>
+                        <ul>
+                            <li>Expensive treatments like cancer therapy, dialysis, heart surgeries, and transplants are beyond the reach of many.</li>
+                            <li>The trust can provide free or subsidized life-saving treatments.</li>
+                        </ul>
+                        
+    
+                        <dt>Support Emergency & Disaster Relief</dt>
+                        <ul>
+                            <li>During natural disasters (floods, earthquakes, pandemics), medical help is crucial.</li>
+                            <li>The trust can provide free medicines, ambulance services, and first aid.</li>
+                        </ul>
+    
+                        <dt>Conduct Free Medical Camps & Mobile Clinics</dt>
+                        <ul>
+                            <li>Organize free health check-up camps in villages and slums.</li>
+                            <li>Operate mobile clinics for areas with no healthcare facilities.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div id="food" class="tab-content">
+                <h2>Food Distributions</h2>
+                    <div class="row">
+                    <div class="col-md-6">
+                    <dt>Help Homeless & Underprivileged Individuals</dt>
+                    <ul>
+                        <li>Many homeless, elderly, or disabled individuals struggle to afford even one meal a day.</li>
+                        <li>A food donation program ensures that no one is left starving.</li>
+                    </ul>
+                    
+                    <dt>Improve Community Health & Productivity</dt>
+                    <ul>
+                        <li>Hunger weakens the body and mind, making it hard for people to work or study.</li>
+                        <li>Elderly individuals maintain their strength and dignity.</li>
+                    </ul>
+                    
+
+                    <dt>Reduce Food Waste & Promote Sustainability</dt>
+                    <ul>
+                        <li>Large amounts of food are wasted daily by restaurants, hotels, and households.</li>
+                        <li>A feeding trust can rescue surplus food and distribute it to those in need.</li>
+                    </ul>
+
+                    <dt>Support Disaster & Crisis Relief</dt>
+                    <ul>
+                        <li>During natural disasters (earthquakes, floods, pandemics, etc.), access to food becomes critical.</li>
+                        <li>A feeding program can provide emergency food supplies and cooked meals.</li>
+                    </ul>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="./Public/images/Feeding-India-1.avif"  class="img-fluid"  > 
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
